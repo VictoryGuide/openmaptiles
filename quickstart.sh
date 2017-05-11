@@ -156,12 +156,19 @@ else
     echo "====> : The testdata ./data/$testdata exists, we don't need to download! "
 fi
 
-
 if [ !  -f ./data/${testdata} ]; then
     echo " "
     echo "Missing ./data/$testdata , Download or Parameter error? "
     exit 404
 fi
+
+echo " "
+echo "-------------------------------------------------------------------------------------"
+echo "====> : Updating BBOX variable in docker-compose config  "
+BBOX=`cat .env | grep 'BBOX=.*' | xargs`
+BBOX=${BBOX:5}
+sed -i 's/BBOX:.*/BBOX:"${BBOX}"/' ./data/docker-compose-config.yml
+cat ./data/docker-compose-config.yml
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
