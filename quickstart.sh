@@ -169,7 +169,6 @@ BBOX=`cat .env | grep 'BBOX=.*' | xargs`
 BBOX=${BBOX:5}
 sed -i "s/BBOX:.*/BBOX: \"${BBOX}\"/" ./data/docker-compose-config.yml
 cat ./data/docker-compose-config.yml
-read -p "Press enter to continue"
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
