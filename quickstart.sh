@@ -173,14 +173,14 @@ cat ./data/docker-compose-config.yml
 echo " "
 echo "-------------------------------------------------------------------------------------"
 echo "====> : Remove old generated source files ( ./build/* ) ( if they exist ) "
-docker run --rm -v $(pwd):/tileset openmaptiles/openmaptiles-tools make clean
+docker-compose run --rm openmaptiles-tools make clean
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
 echo "====> : Code generating from the layer definitions ( ./build/mapping.yaml; ./build/tileset.sql )"
 echo "      : The tool source code: https://github.com/openmaptiles/openmaptiles-tools "
 echo "      : But we generate the tm2source, Imposm mappings and SQL functions from the layer definitions! "
-docker run --rm -v $(pwd):/tileset openmaptiles/openmaptiles-tools make
+docker-compose run --rm openmaptiles-tools make
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
